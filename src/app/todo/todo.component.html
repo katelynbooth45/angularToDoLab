@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ToDo List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>
+  <link rel="stylesheet" type="text/css" href="todo.component.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>TODO LIST</h1>
+    <p>A place to store your todos</p>
+    <form>
+      <input type="text" [formControl]="filter" placeholder="Filter your to-dos">
+    </form>
+    <div>
+      <ol>
+        <li *ngFor="let item of todos; index as i">
+          <div class="todo-container">
+            <button *ngIf="!item.completed" class="complete-button">Complete</button>
+            <p class="task" [ngClass]="{completed: item.completed}">{{ item.task }}</p>
+            <button>X</button>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <form>
+      <input id="task" type="text" formControlName="task" placeholder="Add your to-do">
+      <button class="submit-button" type="submit">Add</button>
+    </form>
+  </div>
+</body>
+</html>
